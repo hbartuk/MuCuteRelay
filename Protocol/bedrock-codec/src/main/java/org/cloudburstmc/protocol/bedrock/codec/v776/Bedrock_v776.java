@@ -35,7 +35,7 @@ public class Bedrock_v776 extends Bedrock_v766 {
     public static final BedrockCodec CODEC = Bedrock_v766.CODEC.toBuilder()
             .raknetProtocolVersion(11)
             .protocolVersion(776)
-            .minecraftVersion("1.21.61")
+            .minecraftVersion("1.21.62")
             .helper(() -> new BedrockCodecHelper_v776(ENTITY_DATA, GAME_RULE_TYPES, ITEM_STACK_REQUEST_TYPES, CONTAINER_SLOT_TYPES, PLAYER_ABILITIES, TEXT_PROCESSING_ORIGINS))
             .updateSerializer(BossEventPacket.class, BossEventSerializer_v776.INSTANCE)
             .updateSerializer(CameraAimAssistPresetsPacket.class, CameraAimAssistPresetsSerializer_v776.INSTANCE)
