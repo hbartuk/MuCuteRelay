@@ -40,21 +40,20 @@ fun authorize(
     }
 
     val httpClient = MinecraftAuth.createHttpClient()
-    httpClient.connectTimeout = 1000
-    httpClient.readTimeout = 2000
-    httpClient.setRetryHandler(RetryHandler(0, Int.MAX_VALUE))
+    httpClient.connectTimeout = 30000
+    httpClient.readTimeout = 30000
+    httpClient.setRetryHandler(RetryHandler(3, Int.MAX_VALUE))
 
-    val fullBedrockSession =
-        MinecraftAuth.BEDROCK_DEVICE_CODE_LOGIN.getFromInput(
-            httpClient,
-            msaDeviceCodeCallback
-        )
+    val fullBedrockSession = MinecraftAuth.BEDROCK_DEVICE_CODE_LOGIN
+        .getFromInput(httpClient, msaDeviceCodeCallback)
+
     if (cache && file != null && !file.isDirectory) {
-        val json = AuthUtils.gson.toJson(MinecraftAuth.BEDROCK_DEVICE_CODE_LOGIN.toJson(fullBedrockSession))
+        val json = AuthUtils.gson.toJson(
+            MinecraftAuth.BEDROCK_DEVICE_CODE_LOGIN.toJson(fullBedrockSession)
+        )
         file.writeText(json)
     }
-    println("Username: ${fullBedrockSession.mcChain.displayName}")
-    println("Expired: ${fullBedrockSession.isExpired}")
+
     return fullBedrockSession
 }
 
