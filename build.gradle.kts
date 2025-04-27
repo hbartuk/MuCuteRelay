@@ -36,3 +36,38 @@ tasks.test {
 kotlin {
     jvmToolchain(17)
 }
+
+tasks.register<Jar>("uberJar") {
+    archiveFileName.set("MuCuteRelay.jar")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from(sourceSets.main.get().output)
+
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get()
+            .filter { it.name.endsWith("jar") }
+            .filter { !it.name.startsWith("annotations-") }
+            .filter { !it.name.startsWith("kotlin-") }
+            .map { zipTree(it) }
+    })
+
+    manifest {
+        attributes(mapOf(
+            "Main-Class" to "com.mucheng.mucute.relay.MuCuteRelayKt"
+        ))
+    }
+
+    exclude(
+        "META-INF/*.RSA",
+        "META-INF/*.SF",
+        "META-INF/*.DSA",
+        "org/intellij/lang/annotations/**",
+        "org/jetbrains/annotations/**",
+        "kotlin/**"
+    )
+}
+
+tasks.jar {
+    dependsOn("uberJar")
+}

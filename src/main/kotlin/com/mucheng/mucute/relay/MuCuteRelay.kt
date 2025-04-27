@@ -38,7 +38,7 @@ class MuCuteRelay(
             .motd("MuCuteRelay")
             .playerCount(0)
             .maximumPlayerCount(20)
-            .subMotd("YouTube: MrPokeG")
+            .subMotd("discord.gg/XFVe5jJU5H")
             .nintendoLimited(false)
 
     }
