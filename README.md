@@ -21,14 +21,14 @@ Follow these steps to compile MuCuteRelay using **Android Studio**:
 2. In Android Studio, go to **Build → Compile All Sources**.
 3. After a successful build, the output `.jar` file will be located at:
    ```
-   MuCuteRelay/build/libs/mucuterelay.jar
+   MuCuteRelay/build/libs/MuCuteRelay.jar
    ```
 
 ---
 
 ## How to Use
 
-- The compiled `mucuterelay.jar` can be used as a standalone proxy to intercept and modify Minecraft Bedrock Edition packets.
+- The compiled `MuCuteRelay.jar` can be used as a standalone proxy to intercept and modify Minecraft Bedrock Edition packets.
 - **MuCuteRelay's Android client implementation** is located in a separate project called [**MuCuteClient**](https://github.com/OpenMITM/MuCuteClient).
 
 ---
