@@ -25,4 +25,6 @@ dependencies {
     api(libs.fastutil.long.obj.maps)
     api(libs.jose4j)
     api(libs.nbt)
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.18.0")
+
 }
