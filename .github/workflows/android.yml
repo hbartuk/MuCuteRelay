@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-release:
-    name: Build and Update Release
+    name: Build and Update Releasee
     runs-on: ubuntu-latest
 
     # Предоставляем права на запись для создания/изменения релиза
