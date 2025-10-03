@@ -156,6 +156,7 @@ public enum EntityFlag {
     RENDER_WHEN_INVISIBLE,
     /**
      * @since v786
+     * ROTATION_AXIS_ALIGNED since v827
      */
     BODY_ROTATION_AXIS_ALIGNED,
     /**
@@ -169,5 +170,9 @@ public enum EntityFlag {
     /**
      * @since v800
      */
-    DOES_SERVER_AUTH_ONLY_DISMOUNT
+    DOES_SERVER_AUTH_ONLY_DISMOUNT,
+    /**
+     * @since v818
+     */
+    BODY_ROTATION_ALWAYS_FOLLOWS_HEAD
 }

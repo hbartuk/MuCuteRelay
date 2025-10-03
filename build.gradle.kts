@@ -26,6 +26,8 @@ dependencies {
     implementation(project(":Protocol:bedrock-connection"))
     implementation(project(":Protocol:common"))
     implementation(libs.bundles.netty)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.7.3")
     testImplementation(kotlin("test"))
 }
 
@@ -49,6 +51,7 @@ tasks.register<Jar>("uberJar") {
             .filter { it.name.endsWith("jar") }
             .filter { !it.name.startsWith("annotations-") }
             .filter { !it.name.startsWith("kotlin-") }
+            .filter { !it.name.startsWith("kotlinx-coroutines-") }
             .map { zipTree(it) }
     })
 
@@ -64,7 +67,9 @@ tasks.register<Jar>("uberJar") {
         "META-INF/*.DSA",
         "org/intellij/lang/annotations/**",
         "org/jetbrains/annotations/**",
-        "kotlin/**"
+        "kotlin/**",
+        "kotlinx/coroutines/**",
+        "_COROUTINE/**"
     )
 }
 

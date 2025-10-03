@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import net.kyori.adventure.text.Component;
 import org.cloudburstmc.math.vector.Vector2f;
 import org.cloudburstmc.math.vector.Vector3f;
 import org.cloudburstmc.math.vector.Vector3i;
@@ -91,10 +92,13 @@ public class StartGamePacket implements BedrockPacket {
     private boolean disablingCustomSkins;
     // Level settings end
     private String levelId;
-    private String levelName;
+    private Component levelName;
     private String premiumWorldTemplateId;
     private boolean trial;
     // SyncedPlayerMovementSettings start
+    /**
+     * @deprecated since v818. {@link AuthoritativeMovementMode#SERVER_WITH_REWIND} is now the default movement mode.
+     */
     private AuthoritativeMovementMode authoritativeMovementMode;
     private int rewindHistorySize;
     boolean serverAuthoritativeBlockBreaking;
@@ -185,6 +189,14 @@ public class StartGamePacket implements BedrockPacket {
      * @since v685
      */
     private String scenarioId;
+    /**
+     * @since v818
+     */
+    private String ownerId;
+    /**
+     * @since v827
+     */
+    private boolean tickDeathSystemsEnabled;
 
     @Override
     public final PacketSignal handle(BedrockPacketHandler handler) {
